@@ -1,0 +1,81 @@
+.list-container {
+    width: fit-content;
+    margin: 60px auto;
+}
+
+.btn-add-client {
+    display: inline-block;
+    padding: .6rem 2rem;
+    text-align: center;
+    margin: 1rem 0;
+    min-width: 7rem;
+    background-color: transparent;
+    font-size: .9rem;
+    font-weight: bold;
+    color: darkslategrey;
+    border: .5px solid grey;
+    border-radius: 6px;
+}
+
+.btn-add-client:hover {
+    cursor: pointer;
+    background-color: #4143E5;
+    color: ghostwhite;
+}
+
+table {
+    min-width: 50rem;
+    border-collapse: collapse;
+}
+
+thead, tr, td, th {
+    text-align: center;
+}
+
+thead {
+    background-color: #7D97F4;
+    color: ghostwhite;
+}
+
+tbody tr td, thead th {
+    padding-block: 10px;
+}
+
+tbody tr:nth-child(odd){
+    background-color: ghostwhite;
+}
+
+tbody tr:nth-child(even){
+    background-color: lightgray;
+}
+
+.delete, .edit, .view{
+    color: dimgray;
+    /*border: 1px solid black;*/
+}
+
+.edit:hover, .delete:hover{
+    cursor: pointer;
+}
+
+.edit:hover {
+    color: #4143E5;
+    }
+
+.view:hover{
+    color: chartreuse;
+}
+
+.delete:hover {
+    color: crimson;
+}
+
+.actions {
+    text-decoration: none;
+}
+
+.actions:has(.edit, .delete)  {
+    margin-right: 10px;
+}
+
+.actions:visited{}
