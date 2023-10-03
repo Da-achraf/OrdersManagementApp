@@ -3,11 +3,11 @@
 <html>
 <head>
     <title>Add Client</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/shared/styles/form.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/shared/styles/styles.css">
 </head>
 <body>
     <%@include file="../../shared/navbar/navbar.jsp"%>
-    <form class="add-client-form" method="post" action="${pageContext.request.contextPath}/client/update">
+    <form class="form" method="post" action="${pageContext.request.contextPath}/client/update">
         <label for="name">
             Name
             <input id="name" type="text" name="name" value="${requestScope.client.name}" required>
@@ -21,7 +21,7 @@
             <input id="phone" type="text" name="phone" value="${requestScope.client.phone}">
         </label>
 
-        <input type="hidden" name="id" value="${requestScope.client.id}">
+        <input type="hidden" name="clientId" value="${requestScope.client.id}">
 
         <input type="submit" value="Update">
 

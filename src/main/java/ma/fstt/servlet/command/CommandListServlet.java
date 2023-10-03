@@ -22,7 +22,6 @@ public class CommandListServlet extends HttpServlet {
 
     @Inject
     private ClientDAO clientDAO;
-
     @Inject
     private CommandDAO commandDAO;
 
@@ -32,10 +31,12 @@ public class CommandListServlet extends HttpServlet {
 
         String clientId = request.getParameter("id");
         List<Command> commands;
+        List<Client> clients;
 
         if (clientId == null || clientId.isEmpty()) {
             try {
                 commands = commandDAO.findAll();
+                clients = clientDAO.findAll();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -43,12 +44,17 @@ public class CommandListServlet extends HttpServlet {
         else {
             try {
                 commands = clientDAO.findAllCommands(clientId);
+                clients = clientDAO.findAll();
+                Client client = clientDAO.findById(clientId);
+                request.setAttribute("client", client);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
 
+
         request.setAttribute("commands", commands);
+        request.setAttribute("clients", clients);
         request.getRequestDispatcher("/command/list/list.jsp").forward(request, response);
     }
 

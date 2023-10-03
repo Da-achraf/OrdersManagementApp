@@ -4,10 +4,11 @@
 <head>
     <title>Add Client</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/client/add/addClient.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/shared/styles/styles.css">
 </head>
 <body>
     <%@include file="../../shared/navbar/navbar.jsp"%>
-    <form class="add-client-form" method="post" action="${pageContext.request.contextPath}/client/add">
+    <form class="form" method="post" action="${pageContext.request.contextPath}/client/add">
         <label for="name">
             Name
             <input id="name" type="text" name="name" required>

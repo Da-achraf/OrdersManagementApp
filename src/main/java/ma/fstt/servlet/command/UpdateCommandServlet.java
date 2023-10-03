@@ -1,4 +1,4 @@
-package ma.fstt.servlet.client;
+package ma.fstt.servlet.command;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -7,24 +7,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ma.fstt.dao.ClientDAO;
+import ma.fstt.dao.CommandDAO;
 import ma.fstt.entities.Client;
+import ma.fstt.entities.Command;
 import ma.fstt.utilities.Utilities;
 
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 // This servlet receives the post request of saving a new client
-@WebServlet(name = "updateClientServlet", value = "/client/update")
-public class UpdateClientServlet extends HttpServlet {
+@WebServlet(name = "updateCommandServlet", value = "/command/update")
+public class UpdateCommandServlet extends HttpServlet {
 
     @Inject
-    ClientDAO clientDAO;
+    CommandDAO commandDAO;
 
     public void init() {}
 
@@ -33,16 +32,20 @@ public class UpdateClientServlet extends HttpServlet {
         if ("POST".equalsIgnoreCase(request.getMethod()))
         {
             Map<String, String> paramMap = Utilities.getParams(request);
-            Long clientId = Long.valueOf(paramMap.get("clientId").trim());
-            String name = paramMap.get("name").trim();
-            String address = paramMap.get("address").trim();
-            String phone = paramMap.get("phone").trim();
+            Long commandId = Long.valueOf(paramMap.get("commandId"));
+            String label = paramMap.get("label").trim();
+            Date date = Date.valueOf(paramMap.get("date"));
+            String status = paramMap.get("status");
+            String deliveryAddr = paramMap.get("deliveryAddr").trim();
+
 
             try {
-                clientDAO.updateClient(new Client(clientId, name, address, phone));
+                Command command = new Command(commandId, label, date, status, deliveryAddr);
+                commandDAO.update(command);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
             response.sendRedirect("list");
         }
     }

@@ -3,26 +3,6 @@
     margin: 60px auto;
 }
 
-.btn-add-client {
-    display: inline-block;
-    padding: .6rem 2rem;
-    text-align: center;
-    margin: 1rem 0;
-    min-width: 7rem;
-    background-color: transparent;
-    font-size: .9rem;
-    font-weight: bold;
-    color: darkslategrey;
-    border: .5px solid grey;
-    border-radius: 6px;
-}
-
-.btn-add-client:hover {
-    cursor: pointer;
-    background-color: #4143E5;
-    color: ghostwhite;
-}
-
 table {
     min-width: 50rem;
     border-collapse: collapse;
@@ -33,7 +13,7 @@ thead, tr, td, th {
 }
 
 thead {
-    background-color: #7D97F4;
+    background-color: var(--secondary-color);
     color: ghostwhite;
 }
 
@@ -49,20 +29,17 @@ tbody tr:nth-child(even){
     background-color: lightgray;
 }
 
-.delete, .edit, .view{
+.delete, .edit{
     color: dimgray;
 }
+
 
 .edit:hover, .delete:hover{
     cursor: pointer;
 }
 
 .edit:hover {
-    color: #4143E5;
-    }
-
-.view:hover{
-    color: chartreuse;
+    color: var(--main-color);
 }
 
 .delete:hover {
@@ -78,3 +55,60 @@ tbody tr:nth-child(even){
 }
 
 .actions:visited{}
+
+.client-name {
+    position: relative;
+    display: inline-block;
+    color: black;
+}
+
+.client-name:hover{
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {}
+
+.command-count {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    background-color: #ef4d4d;
+    height: 1rem;
+    width: 1rem;
+    color: ghostwhite;
+    /*border: .1px solid black;*/
+    border-radius: 50%;
+    font-size: .7rem;
+    margin-left: .2rem;
+    font-weight: bold;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.client-name::after{
+    position: absolute;
+    display: none;
+    content: 'View Commands';
+    font-size: .7rem;
+    font-family: 'Open Sans', sans-serif;
+    background-color: whitesmoke;
+    z-index: 10;
+    color: dimgray;
+    border: .1px solid black;
+    border-radius: 4px;
+    padding: .5rem;
+    right: -8.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all .4s ease-in-out;
+}
+
+.client-name:hover::after{
+    display: block;
+}
+
+.command-count:visited{}

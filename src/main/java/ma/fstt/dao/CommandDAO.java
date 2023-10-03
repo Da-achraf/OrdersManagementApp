@@ -59,26 +59,27 @@ public class CommandDAO implements CommandRepository {
 
     @Override
     public void add(Command command) throws SQLException {
-        query = "INSERT INTO command(date, status, deliveryAddr, label) VALUES(?, ?, ?, ?)";
+        query = "INSERT INTO command(label, date, status, deliveryAddr, client_id) VALUES(?, ?, ?, ?, ?)";
 
         preparedStatement = cnx.prepareStatement(query);
-        preparedStatement.setDate(1, command.getDate());
-        preparedStatement.setString(2, command.getStatus());
-        preparedStatement.setString(3, command.getDeliveryAddr());
-        preparedStatement.setString(4, command.getLabel());
+        preparedStatement.setString(1, command.getLabel());
+        preparedStatement.setDate(2, command.getDate());
+        preparedStatement.setString(3, command.getStatus());
+        preparedStatement.setString(4, command.getDeliveryAddr());
+        preparedStatement.setString(5, String.valueOf(command.getClient().getId()));
         preparedStatement.executeUpdate();
     }
 
     @Override
     public void update(Command command) throws SQLException {
-        query = "UPDATE command SET date=?, status=?, deliveryAddr=?, label=? WHERE id=?";
+        query = "UPDATE command SET label=?, date=?, status=?, deliveryAddr=? WHERE id=?";
 
         preparedStatement = cnx.prepareStatement(query);
-        preparedStatement.setDate(1, command.getDate());
-        preparedStatement.setString(2, command.getStatus());
-        preparedStatement.setString(3, command.getDeliveryAddr());
-        preparedStatement.setString(4, command.getLabel());
-        preparedStatement.setString(4, command.getId().toString());
+        preparedStatement.setString(1, command.getLabel());
+        preparedStatement.setDate(2, command.getDate());
+        preparedStatement.setString(3, command.getStatus());
+        preparedStatement.setString(4, command.getDeliveryAddr());
+        preparedStatement.setInt(5, Math.toIntExact(command.getId()));
         preparedStatement.executeUpdate();
     }
 

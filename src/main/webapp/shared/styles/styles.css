@@ -1,0 +1,96 @@
+/* Buttons styling */
+.button {
+    display: inline-block;
+    padding: .6rem 2rem;
+    text-align: center;
+    margin: 1rem 0;
+    min-width: 7rem;
+    background-color: transparent;
+    font-size: .9rem;
+    font-weight: bold;
+    color: darkslategrey;
+    border: .5px solid grey;
+    border-radius: 6px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: ghostwhite;
+}
+
+/* Forms Styling */
+.form {
+    width: 70%;
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+
+.form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.form .status-label {
+    display: block;
+    margin-bottom: .2rem;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.form input {
+    display: inline-block;
+    width: 100%;
+    padding: .5rem .2rem;
+    margin-top: .2rem;
+    border-radius: 4px;
+    border: .2px solid lightslategrey;
+}
+
+.form input:focus-within {
+    outline: 2px solid var(--secondary-color);
+}
+
+.form input[type=radio] {
+    display: inline-block;
+    width: fit-content;
+}
+
+.form input[type=radio]:hover {
+    cursor: pointer;
+}
+
+.form input[type="submit"]{
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--secondary-color);
+    padding-block: .6rem;
+    color: white;
+    border: none;
+}
+
+.form input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--main-color);
+}
+
+/*  */
+.status {
+    border-radius: 4px;
+    padding: .2rem .3rem;
+    font-size: .8rem;
+    font-weight: bolder;
+}
+
+.pending {
+    background-color: crimson;
+    color: ghostwhite;
+}
+
+.delivered {
+    background-color: limegreen;
+    color: ghostwhite;
+}

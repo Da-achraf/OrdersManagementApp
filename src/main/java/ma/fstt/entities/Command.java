@@ -76,7 +76,7 @@ public class Command {
                 ", label='" + label + '\'' +
                 ", status='" + status + '\'' +
                 ", deliveryAddr='" + deliveryAddr + '\'' +
-                ", client=" + client +
+                ", clientId=" + client.getId() +
                 '}';
     }
 

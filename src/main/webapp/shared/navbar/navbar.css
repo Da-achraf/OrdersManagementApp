@@ -1,6 +1,11 @@
+:root{
+    --main-color: rgba(65, 67, 229, .8);
+    --secondary-color: #7D97F4;
+}
+
 
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .nav-container {
@@ -38,11 +43,11 @@ a {
 .nav-item:hover {
     cursor: pointer;
     color: ghostwhite;
-    background-color: #4143E5;
+    background-color: var(--main-color);
 }
 
 .active {
-    background-color: #4143E5;
+    background-color: var(--main-color);
     color: ghostwhite;
 }
 

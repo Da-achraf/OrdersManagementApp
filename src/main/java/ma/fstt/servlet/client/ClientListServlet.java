@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ma.fstt.dao.ClientDAO;
 import ma.fstt.entities.Client;
+import ma.fstt.entities.Command;
 
 
 @WebServlet(name = "clientListServlet", value = "/client/list", loadOnStartup = 1)
@@ -26,9 +27,17 @@ public class ClientListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         List<Client> clientList = new ArrayList<>();
-
 		try {
 			clientList = clientDAO.findAll();
+            clientList.forEach(client -> {
+                List<Command> commands;
+                try {
+                    commands = clientDAO.findAllCommands(String.valueOf(client.getId()));
+                    client.setCommands(commands);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
